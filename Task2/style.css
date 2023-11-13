@@ -82,6 +82,15 @@ ul li{
     align-items: center;
     justify-content: center;
 }
+
+ul li div{
+    cursor: pointer;
+}
+
+ul li div span{
+    pointer-events: none;
+}
+
 .check-div span{
     font-size: 27px;
     color: rgba(50, 1, 21, 0.956);

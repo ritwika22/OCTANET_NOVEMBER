@@ -1,21 +1,8 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 
-// function addTask(){
-//     if(inputBox.value === ''){
-//         alert("Input box cannot be empty!!!");
-//     }else{
-//         let li = document.createElement("li");
-//         li.innerHTML = inputBox.value;
-//         listContainer.appendChild(li);
-//         let span = document.createElement("span");
-//         span.innerHTML = "\u00d7";
-//         li.appendChild(span);
-//     }
-//     inputBox.value = "";
-// }
-
-var allTask = []
+var allTask = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
+createTask();
 
 function addTask() {
     var val = inputBox.value
@@ -63,22 +50,56 @@ function createTask() {
                     </li>";
     }
     listContainer.innerHTML = content;
+    localStorage.setItem('tasks', JSON.stringify(allTask));
     addEventListenerToAllTask();
 }
 
 function addEventListenerToAllTask() {
-    li = listContainer.children;
-    for (i = 0; i < li.length; i++) {
-        li[i].addEventListener("click", function (e) { addCheck(e); });
+    var chk_div = document.getElementsByClassName("check-div");
+    for (i = 0; i < chk_div.length; i++) {
+        chk_div[i].addEventListener("click", function (e) { addCheck(e); });
+    }
+
+    var del_div = document.getElementsByClassName("delete-div");
+    for (i = 0; i < del_div.length; i++) {
+        del_div[i].addEventListener("click", function (e) { delTask(e); });
+    }
+
+    var edt_div = document.getElementsByClassName("edit-div");
+    for (i = 0; i < edt_div.length; i++) {
+        edt_div[i].addEventListener("click", function (e) { edtTask(e); });
     }
 }
 
 function addCheck(event){
-    li = event.target;
+    console.log(event);
+    li = event.target.parentNode;
+    p = li.getElementsByTagName("p")[0];
     for(i=0;i<allTask.length;i++){
-        if(li.innerHTML == allTask[i].title){
+        if(p.innerHTML == allTask[i].title){
             allTask[i].checked = !allTask[i].checked;
         }
     }
     createTask();
+}
+
+function delTask(event){
+    li = event.target.parentNode;
+    p = li.getElementsByTagName("p")[0];
+    index_to_del = 0;
+    for(i=0;i<allTask.length;i++){
+        if(p.innerHTML == allTask[i].title){
+            index_to_del = i;
+            break;
+        }
+    }
+    allTask.splice(index_to_del, 1);
+    createTask();
+}
+
+function edtTask(event){
+    li = event.target.parentNode;
+    p = li.getElementsByTagName("p")[0];
+    inputBox.value = p.innerHTML;
+    delTask(event);
 }
