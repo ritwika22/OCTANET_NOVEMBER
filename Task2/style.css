@@ -9,12 +9,23 @@
     width: 100%;
     min-height: 100vh;
     padding: 10px;
+    padding-top: 100px;
 }
+
+.title{
+    color: white;
+    margin-inline: auto;
+    width: fit-content;
+    font-size: 60px;
+    font-weight: 700;
+}
+
 .todo-box{
     width: 100%;
     max-width: 550px;
     background-color: #fff;
-    margin: 300px auto;
+    margin-inline: auto;
+    margin-top: 40px;
     padding: 40px 30px 70px;
     border-radius: 10px;
 }
@@ -53,26 +64,76 @@ button{
 ul li{
     list-style: none;
     font-size: 17px;
-    padding: 12px 8px 12px 13px;
+    padding: 12px 13px 12px 13px;
     user-select: none;
     display: flex;
     align-items: center;
     gap: 10px;
     position: relative;
 }
-/* ul li::before{
-    content: '';
-    position: absolute;
-    height: 25px;
+
+ul li.checked{
+    border-radius: 10px;
+    background-color: #bfbfbf;
+}
+
+ul li .prio-div{
+    position: relative;
+}
+
+ul li > div{
     width: 25px;
-    border-radius: 50%;
-    background-image: url(images/unchecked.png);
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    top: 10px;
-    left: 8px;
-} */
+    height: 25px;
+}
+
+
+ul li .prio-div .hover {
+    padding-block: 10px;
+    padding-inline: 10px;
+    background-color: #f0f0f0;
+    border: 3px solid rgba(50, 1, 21, 0.956);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 20px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    z-index: 10;
+}
+
+ul li .prio-div:hover .hover {
+    transform: translateX(-50%) scale(1);
+}
+
+ul li .prio-div .hover span{
+    display: block;
+    pointer-events: unset;
+}
+
+ul li .prio-div .hover .high{
+    color: #dc0000;
+}
+ul li .prio-div .hover .medium{
+    color: #fdc500;
+}
+ul li .prio-div .hover .low{
+    color: #00ac46;
+}
+
+ul li.high .prio-div{
+    color: #dc0000;
+}
+
+ul li.medium .prio-div{
+    color: #fdc500;
+}
+
+ul li.low .prio-div{
+    color: #00ac46;
+}
+
 .check-div{
     height: 25px;
     width: 25px;
