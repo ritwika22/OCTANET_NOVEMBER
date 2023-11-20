@@ -79,6 +79,9 @@ ul li.checked{
 
 ul li .prio-div{
     position: relative;
+    display: flex;
+    width: fit-content;
+    gap: 4px;
 }
 
 ul li > div{
@@ -86,39 +89,34 @@ ul li > div{
     height: 25px;
 }
 
-
-ul li .prio-div .hover {
-    padding-block: 10px;
-    padding-inline: 10px;
-    background-color: #f0f0f0;
-    border: 3px solid rgba(50, 1, 21, 0.956);
+ul li .hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    border-radius: 20px;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) scale(0);
-    z-index: 10;
+    width: 0;
+    height: fit-content;
+    overflow: hidden;
+    transition: all 0.2s;
+    padding-right: 0px;
 }
 
 ul li .prio-div:hover .hover {
-    transform: translateX(-50%) scale(1);
+    padding-right: 4px;
+    border-right: 1px solid #bfbfbf;
+    width: 77px;
 }
 
-ul li .prio-div .hover span{
-    display: block;
+ul li .hover span{
     pointer-events: unset;
 }
 
-ul li .prio-div .hover .high{
+ul li .hover .high{
     color: #dc0000;
 }
-ul li .prio-div .hover .medium{
+ul li .hover .medium{
     color: #fdc500;
 }
-ul li .prio-div .hover .low{
+ul li .hover .low{
     color: #00ac46;
 }
 

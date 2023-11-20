@@ -53,9 +53,6 @@ function createTask() {
                     allTask[i].title +
                     "</p> \
                     <div class=\"prio-div\"> \
-                    <span class=\"material-symbols-outlined\"> \
-                    circle \
-                    </span> \
                     <div class=\"hover\"> \
                         <span class=\"material-symbols-outlined priority-h high\"> \
                         circle \
@@ -67,6 +64,9 @@ function createTask() {
                         circle \
                         </span> \
                     </div> \
+                    <span class=\"material-symbols-outlined\"> \
+                    circle \
+                    </span> \
                     </div> \
                     <div class=\"edit-div\"> \
                     <span class=\"material-symbols-outlined\"> \
